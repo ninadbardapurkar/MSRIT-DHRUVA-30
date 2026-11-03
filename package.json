@@ -1,0 +1,21 @@
+{
+  "name": "msrit-1st-sem-chemistry-cycle-web-app",
+  "version": "1.0.0",
+  "description": "Ramaiah Institute of Technology (MSRIT) 1st Semester B.E. (ECE - Chemistry Cycle) Interactive 3D Flashcards, PYQ Archive & RIT Notes Study Vault",
+  "scripts": {
+    "build": "node build.js",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "msrit",
+    "rit-bangalore",
+    "chemistry-cycle",
+    "ece",
+    "flashcards",
+    "pyq",
+    "engineering-notes",
+    "vtu-autonomous"
+  ],
+  "author": "MSRIT Academic Exam Prep Hub",
+  "license": "MIT"
+}

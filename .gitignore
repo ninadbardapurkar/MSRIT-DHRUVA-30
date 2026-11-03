@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output (automatically built by Vercel via build.js)
+public/
+
+# Python cache & scratch scripts
+__pycache__/
+*.pyc
+.system_generated/
+*.log
+
+# Large reference PDFs (already transcribed into js/data.js)
+*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSRIT 1st Sem (ECE - Chemistry Cycle) Flashcards, PYQ & RIT Notes Vault</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter & Noto Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif:ital,wght@0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX for Beautiful LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            msritNavy: '#1B365D',
+            msritNavyDark: '#0f223d',
+            msritAmber: '#F59E0B',
+            msritAmberDark: '#B45309',
+            msritEmerald: '#10B981',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col text-slate-800 antialiased selection:bg-amber-200 selection:text-amber-900">
+
+  <!-- =========================================================================
+       TOP HEADER (Deep Navy Theme)
+       ========================================================================= -->
+  <header class="bg-[#1B365D] text-white shadow-md border-b border-slate-700 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between py-3 gap-3">
+        
+        <!-- Institution Branding & Program Badge -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="setMode('home')" title="Go to Home Dashboard">
+          <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-900 font-bold flex items-center justify-center text-lg shadow-sm font-serif-heading hover:bg-amber-400 transition-colors">
+            RIT
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-[10px] tracking-wider uppercase font-extrabold bg-amber-400 text-slate-900 px-2 py-0.5 rounded shadow-2xs">
+                MSRIT Autonomous • VTU
+              </span>
+              <span class="text-[11px] text-blue-200 font-medium">
+                1st Sem B.E. (Chemistry & Physics Cycles)
+              </span>
+            </div>
+            <h1 class="text-sm md:text-lg font-bold font-serif-heading tracking-tight text-white flex items-center space-x-2">
+              <span>Interactive 3D Flashcards, Exam Quizzes & RIT Notes Vault</span>
+            </h1>
+          </div>
+        </div>
+
+        <!-- 5-Mode View Switcher Tabs + Direct Drive Link -->
+        <div class="flex items-center gap-2 overflow-x-auto self-start md:self-auto custom-scrollbar">
+          <div class="flex items-center bg-[#0f223d] p-1 rounded-xl border border-blue-900/40">
+            <button onclick="setMode('home')" data-mode="home"
+              class="mode-tab-btn px-3 py-1.5 rounded-lg text-xs md:text-sm font-semibold transition-all bg-white text-[#1B365D] shadow-sm flex items-center space-x-1.5 whitespace-nowrap">
+              <span>🏠</span>
+              <span>Home</span>
+            </button>
+            <button onclick="setMode('study')" data-mode="study"
+              class="mode-tab-btn px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center space-x-1.5 whitespace-nowrap">
+              <span>🃏</span>
+              <span>Study Deck</span>
+            </button>
+            <button onclick="setMode('grid')" data-mode="grid"
+              class="mode-tab-btn px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center space-x-1.5 whitespace-nowrap">
+              <span>📑</span>
+              <span>All Cards</span>
+            </button>
+            <button onclick="setMode('quiz')" data-mode="quiz"
+              class="mode-tab-btn px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center space-x-1.5 whitespace-nowrap">
+              <span>⚡</span>
+              <span>Rapid Quiz</span>
+            </button>
+            <button onclick="setMode('notes')" data-mode="notes"
+              class="mode-tab-btn px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center space-x-1.5 whitespace-nowrap">
+              <span>📚</span>
+              <span>RIT Notes</span>
+            </button>
+          </div>
+
+          <!-- Direct Google Drive Access Button -->
+          <a href="https://drive.google.com/drive/folders/1xxqSvT6AOTEsRlWynwbvLyXPW2AIzI34?usp=sharing_eel" target="_blank" rel="noopener noreferrer"
+            title="Open Student Google Drive folder with notes, PPTs & PYQs"
+            class="hidden lg:flex items-center space-x-1.5 px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-bold transition-all shadow-sm whitespace-nowrap active:scale-95">
+            <span>📂</span>
+            <span>Drive Vault ↗</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       SUB-NAV BARS: Subject Selector & Unit Pill Bar
+       ========================================================================= -->
+  <section id="navBarsSection" class="bg-white border-b border-slate-200 shadow-2xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 space-y-2">
+      
+      <!-- Top Subject Selector Bar -->
+      <div class="flex items-center space-x-2">
+        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider hidden sm:inline whitespace-nowrap">
+          Subject:
+        </span>
+        <div id="subjectBar" class="flex items-center space-x-2 overflow-x-auto pb-1 flex-1 custom-scrollbar">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Unit / Chapter Pill Bar -->
+      <div class="flex items-center space-x-2 pt-1 border-t border-slate-100">
+        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider hidden sm:inline whitespace-nowrap">
+          Chapter:
+        </span>
+        <div id="unitBar" class="flex items-center space-x-2 overflow-x-auto pb-1 flex-1 custom-scrollbar">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       STICKY FILTER & SEARCH TOOLBAR
+       ========================================================================= -->
+  <section id="filterBar" class="bg-slate-50 border-b border-slate-200 py-2.5 px-4 sticky top-[69px] z-30 shadow-2xs">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Instant Search Input & Smart Dropdown -->
+      <div class="flex items-center gap-2.5 w-full md:w-auto flex-1 max-w-2xl">
+        <div class="relative flex-1">
+          <input type="text" id="searchInput" placeholder="Search questions, formulas, derivations, SEE/CIE tags..."
+            class="w-full bg-white border border-slate-300 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1B365D] focus:border-transparent transition-all shadow-2xs">
+          <span class="absolute left-3 top-2 text-slate-400 text-xs">🔍</span>
+        </div>
+
+        <select id="filterSelect"
+          class="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#1B365D] shadow-2xs">
+          <option value="all">All Flashcards</option>
+          <option value="high-freq">🔥 High-Frequency PYQs Only</option>
+          <option value="practice">🎯 Practice Questions Only</option>
+          <option value="exceptions-derivations">⚡ Exceptions & Derivations</option>
+          <option value="starred">★ Starred for Review</option>
+          <option value="unmastered">Unmastered Only</option>
+          <option value="mastered">✓ Mastered</option>
+        </select>
+      </div>
+
+      <!-- Live Counters & Action Buttons -->
+      <div class="flex items-center space-x-3 text-xs w-full md:w-auto justify-between md:justify-end">
+        <div class="flex items-center space-x-2 text-slate-600 font-medium">
+          <span class="bg-white px-2.5 py-1 rounded-md border border-slate-200 shadow-2xs">
+            Showing: <strong id="countShowing" class="text-slate-900">0</strong>
+          </span>
+          <span class="bg-white px-2.5 py-1 rounded-md border border-slate-200 shadow-2xs text-emerald-700">
+            ✓ Mastered: <strong id="countMastered">0</strong>
+          </span>
+          <span class="bg-white px-2.5 py-1 rounded-md border border-slate-200 shadow-2xs text-amber-700">
+            ★ Review: <strong id="countStarred">0</strong>
+          </span>
+        </div>
+
+        <button onclick="resetAllMarks()" 
+          class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-600 border border-slate-300 rounded-md text-xs font-semibold transition-all shadow-2xs">
+          Reset Marks
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+    
+    <!-- -----------------------------------------------------------------------
+         MODE 0: HOME DASHBOARD
+         ----------------------------------------------------------------------- -->
+    <section id="homeDashboardView" class="space-y-8">
+      
+      <!-- Welcome Hero Card -->
+      <div class="bg-gradient-to-br from-[#1B365D] via-[#142a4a] to-[#0a1729] rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-blue-900/40 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl space-y-3">
+          <div class="inline-flex items-center space-x-2 bg-amber-400 text-slate-900 px-3 py-1 rounded-full text-xs font-black tracking-wider uppercase shadow-sm">
+            <span>🎓</span>
+            <span>MSRIT Autonomous • Exam Portal</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-serif-heading tracking-tight text-white">
+            1st Year Engineering Exam Revision & Study Hub
+          </h2>
+          <p class="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
+            Master your CIE and SEE semester examinations with verified PYQ solutions, high-probability practice flashcards with active recall, interactive chapter tests, and curated RIT unit formula sheets across all 10 subjects.
+          </p>
+
+          <!-- Core Stat Counters Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-amber-400" id="homeSubjectCount">10</span>
+              <span class="text-[11px] font-medium text-blue-200">Total Subjects</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-emerald-400" id="homeCardCount">171</span>
+              <span class="text-[11px] font-medium text-blue-200">Flashcards</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-sky-400" id="homeQuizCount">26</span>
+              <span class="text-[11px] font-medium text-blue-200">Interactive Tests</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 text-center">
+              <span class="block text-xl sm:text-2xl font-black text-purple-300" id="homeUnitsCount">50</span>
+              <span class="text-[11px] font-medium text-blue-200">Units (All 1-5)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Drive Study Vault Banner (User Requested Resource) -->
+      <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-2xl p-5 sm:p-6 border-2 border-emerald-400/50 shadow-sm flex flex-col md:flex-row items-center justify-between gap-5">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl shadow-sm shrink-0">
+            📂
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center space-x-2">
+              <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
+                Official Google Drive Vault
+              </span>
+              <span class="text-xs text-slate-500 font-medium hidden sm:inline">
+                Direct Cloud Storage
+              </span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 font-serif-heading">
+              Student Google Drive Study Materials & Question Banks
+            </h3>
+            <p class="text-xs text-slate-600 max-w-2xl">
+              Access lecture presentations, question banks, assignments, previous semester question papers, and handwritten notes directly from Google Drive.
+            </p>
+          </div>
+        </div>
+        <div class="shrink-0 w-full md:w-auto">
+          <a href="https://drive.google.com/drive/folders/1xxqSvT6AOTEsRlWynwbvLyXPW2AIzI34?usp=sharing_eel" target="_blank" rel="noopener noreferrer"
+            class="w-full md:w-auto inline-flex items-center justify-center space-x-2 px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-sm active:scale-95 text-center">
+            <span>Open Google Drive Vault</span>
+            <span class="text-emerald-200">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Quick Mode Launchers Grid -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 font-serif-heading">
+              Study Modes & Learning Tools
+            </h3>
+            <p class="text-xs text-slate-500">
+              Select how you want to prepare today: 3D interactive flashcards, full question bank, timed testing, or formula notes.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Mode 1: Study Deck -->
+          <div onclick="setMode('study')"
+            class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:shadow-md hover:border-[#1B365D]/40 transition-all cursor-pointer group flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 font-bold flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                🃏
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm group-hover:text-[#1B365D] transition-colors">
+                Study Deck (3D Flip)
+              </h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Active recall flashcards with KaTeX math derivations, balanced reactions, and memory cues.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-bold text-[#1B365D]">
+              <span>Launch Flashcards</span>
+              <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+
+          <!-- Mode 2: All Cards Grid -->
+          <div onclick="setMode('grid')"
+            class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:shadow-md hover:border-[#1B365D]/40 transition-all cursor-pointer group flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                📑
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm group-hover:text-emerald-800 transition-colors">
+                All Cards Grid
+              </h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Browse all 171 questions side-by-side with marking schemes, instant filters, and printable sheets.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-bold text-emerald-700">
+              <span>Browse Catalog</span>
+              <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+
+          <!-- Mode 3: Rapid Quiz -->
+          <div onclick="setMode('quiz')"
+            class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:shadow-md hover:border-[#1B365D]/40 transition-all cursor-pointer group flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-bold flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                ⚡
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm group-hover:text-amber-800 transition-colors">
+                Rapid Exam Quiz
+              </h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                26 interactive test questions with instant automated evaluation, scoring, and model explanations.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-bold text-amber-700">
+              <span>Start Quiz Test</span>
+              <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+
+          <!-- Mode 4: Notes Vault -->
+          <div onclick="setMode('notes')"
+            class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:shadow-md hover:border-[#1B365D]/40 transition-all cursor-pointer group flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 font-bold flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                📚
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm group-hover:text-purple-800 transition-colors">
+                RIT Notes Vault
+              </h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Comprehensive unit revision summaries, high-yield formula sheets, and chapter exam blueprints.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-bold text-purple-700">
+              <span>Open Notes Vault</span>
+              <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quick Flashcard Direct Preview on Home -->
+      <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-100 text-[#1B365D]">
+                Featured Flashcard
+              </span>
+              <span class="text-xs text-slate-500 font-medium">
+                Active Recall Preview
+              </span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 font-serif-heading mt-1">
+              High-Yield Revision & Practice Flashcard
+            </h3>
+          </div>
+          <button onclick="setMode('study')"
+            class="px-4 py-2 bg-[#1B365D] hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-2xs flex items-center space-x-1.5 self-start sm:self-auto active:scale-95">
+            <span>Launch Full Study Deck (171 Cards)</span>
+            <span>→</span>
+          </button>
+        </div>
+
+        <!-- Mount target for featured card -->
+        <div id="homeFeaturedCardContainer">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- 10 Subjects Interactive Grid -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 font-serif-heading">
+              All 10 Subjects Catalog
+            </h3>
+            <p class="text-xs text-slate-500">
+              Jump directly into flashcards, chapter tests, or revision notes for any specific subject.
+            </p>
+          </div>
+          <div class="flex items-center space-x-2 text-xs">
+            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold border border-blue-200">Chemistry Cycle</span>
+            <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-semibold border border-sky-200">Physics Cycle</span>
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-semibold border border-amber-200">Humanities</span>
+          </div>
+        </div>
+
+        <div id="homeSubjectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         MODE 1: STUDY DECK (3D FLIP)
+         ----------------------------------------------------------------------- -->
+    <section id="studyDeckView" class="hidden space-y-6">
+      
+      <!-- 3D Card Mount Target -->
+      <div id="studyCardContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Study Deck Navigation & Control Dock -->
+      <div id="studyControls" class="max-w-3xl mx-auto flex flex-wrap items-center justify-between gap-3 pt-2">
+        <div class="flex items-center space-x-2">
+          <button onclick="prevCard()" 
+            class="px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold transition-all shadow-2xs flex items-center space-x-1.5 active:scale-95">
+            <span>←</span>
+            <span>Previous</span>
+            <kbd class="hidden sm:inline bg-slate-100 px-1 py-0.5 rounded text-[10px] text-slate-500">←</kbd>
+          </button>
+          
+          <button onclick="toggleCardFlip()" 
+            class="px-5 py-2 bg-[#1B365D] hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center space-x-1.5 active:scale-95">
+            <span>🔄</span>
+            <span>Flip Card</span>
+            <kbd class="hidden sm:inline bg-blue-900/60 text-white px-1 py-0.5 rounded text-[10px]">Space</kbd>
+          </button>
+
+          <button onclick="nextCard()" 
+            class="px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold transition-all shadow-2xs flex items-center space-x-1.5 active:scale-95">
+            <span>Next</span>
+            <span>→</span>
+            <kbd class="hidden sm:inline bg-slate-100 px-1 py-0.5 rounded text-[10px] text-slate-500">→</kbd>
+          </button>
+        </div>
+
+        <!-- Center Counter Display -->
+        <span id="cardIndexDisplay" class="text-xs font-bold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
+          0 / 0
+        </span>
+
+        <!-- Right Side Actions: Shuffle, Star, Master -->
+        <div class="flex items-center space-x-2">
+          <button onclick="shuffleCards()" title="Shuffle Deck (Randomize order)"
+            class="px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 rounded-lg text-xs font-medium transition-all shadow-2xs flex items-center space-x-1">
+            <span>🔀</span>
+            <span>Shuffle</span>
+          </button>
+
+          <button id="btnStarCard" onclick="toggleStarCurrent()"
+            class="px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 flex items-center space-x-1.5 transition-all shadow-2xs">
+            <span>☆</span>
+            <span>Star for Review</span>
+          </button>
+
+          <button id="btnMasterCard" onclick="toggleMasterCurrent()"
+            class="px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 flex items-center space-x-1.5 transition-all shadow-2xs">
+            <span>○</span>
+            <span>Mark Mastered</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Keyboard Shortcuts Cheatsheet -->
+      <div class="max-w-3xl mx-auto mt-4 p-3 bg-white/70 rounded-xl border border-slate-200/80 text-[11px] text-slate-500 flex flex-wrap items-center justify-center gap-4 text-center">
+        <span><kbd class="px-1.5 py-0.5 bg-slate-200 border border-slate-300 rounded font-mono text-[10px]">Space</kbd> Flip</span>
+        <span><kbd class="px-1.5 py-0.5 bg-slate-200 border border-slate-300 rounded font-mono text-[10px]">←</kbd> / <kbd class="px-1.5 py-0.5 bg-slate-200 border border-slate-300 rounded font-mono text-[10px]">→</kbd> Prev / Next</span>
+        <span><kbd class="px-1.5 py-0.5 bg-slate-200 border border-slate-300 rounded font-mono text-[10px]">S</kbd> Star Review</span>
+        <span><kbd class="px-1.5 py-0.5 bg-slate-200 border border-slate-300 rounded font-mono text-[10px]">M</kbd> Mark Mastered</span>
+        <span><kbd class="px-1.5 py-0.5 bg-slate-200 border border-slate-300 rounded font-mono text-[10px]">H</kbd> Toggle Memory Cue</span>
+      </div>
+
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         MODE 2: ALL CARDS GRID (BROWSE & PRINT)
+         ----------------------------------------------------------------------- -->
+    <section id="allCardsGridView" class="hidden space-y-4">
+      
+      <!-- Action Toolbar -->
+      <div class="flex items-center justify-between bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs">
+        <div>
+          <h2 class="text-sm md:text-base font-bold text-slate-900 font-serif-heading">
+            All Flashcards & PYQ Catalog
+          </h2>
+          <p class="text-xs text-slate-500">
+            Side-by-side question prompts and complete marking scheme solutions for rapid scanning.
+          </p>
+        </div>
+        
+        <div class="flex items-center space-x-2">
+          <button id="btnToggleGridAnswers" onclick="toggleGridAnswers()"
+            class="px-3 py-1.5 bg-white text-slate-700 hover:bg-slate-50 border border-slate-300 rounded-lg text-xs font-semibold transition-all shadow-2xs">
+            Hide All Answers
+          </button>
+          <button onclick="printAllCards()"
+            class="px-3.5 py-1.5 bg-[#1B365D] hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition-all shadow-sm flex items-center space-x-1.5">
+            <span>🖨️</span>
+            <span>Print Flashcards</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2-Column Responsive Card Grid -->
+      <div id="gridCardsList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         MODE 3: RAPID EXAM QUIZ (PYQ ACTIVE RECALL)
+         ----------------------------------------------------------------------- -->
+    <section id="rapidQuizView" class="hidden space-y-6">
+      <div id="quizContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         MODE 4: RIT NOTES & PYQ VAULT
+         ----------------------------------------------------------------------- -->
+    <section id="notesVaultView" class="hidden space-y-6">
+      <div id="notesVaultContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-12">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p class="font-medium text-slate-700">
+        Ramaiah Institute of Technology (MSRIT), Bengaluru • 1st Semester B.E. (ECE — Chemistry Cycle)
+      </p>
+      <p class="text-[11px] text-slate-400">
+        Engineered with zero paid APIs ($0 / ₹0 hosting cost) • Fully offline & Vercel ready. Safe to share with classmates!
+      </p>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       IN-PAGE TOAST NOTIFICATION CONTAINER
+       ========================================================================= -->
+  <div id="toastContainer" class="toast-container fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- Application Scripts -->
+  <script src="./js/data.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
